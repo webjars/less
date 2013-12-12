@@ -41,9 +41,10 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstreamVersion>1.5.0</upstreamVersion>
-        <sourceUrl>https://raw.github.com/cloudhead/less.js/master/dist</sourceUrl>
+        <upstreamVersion>1.5.1</upstreamVersion>
+        <sourceUrl>https://github.com/less/less.js/archive</sourceUrl>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstreamVersion}</destDir>
+        <extractDir>${project.build.directory}/less.js-${upstreamVersion}</extractDir>
     </properties>
     
     <build>
@@ -59,18 +60,33 @@
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${sourceUrl}</url>
-                            <fromFile>less-${upstreamVersion}.js</fromFile>
-                            <toFile>${destDir}/less.js</toFile>
+                            <fromFile>v${upstreamVersion}.zip</fromFile>
+                            <toFile>${project.build.directory}/less.zip</toFile>
                         </configuration>
                     </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
                     <execution>
-                        <id>download-min-js</id>
                         <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
+                        <goals><goal>run</goal></goals>
                         <configuration>
-                            <url>${sourceUrl}</url>
-                            <fromFile>less-${upstreamVersion}.min.js</fromFile>
-                            <toFile>${destDir}/less.min.js</toFile>
+                            <target>
+                                <echo message="unzip archive" />
+                                <unzip src="${project.build.directory}/less.zip" dest="${project.build.directory}" />
+                                <echo message="moving resources" />
+                                <move todir="${destDir}/lib">
+                                    <fileset dir="${extractDir}/lib"/>
+                                </move>
+                                <move file="${extractDir}/dist/less-${upstreamVersion}.js"
+                                    tofile="${destDir}/less.js"/>
+                                <move file="${extractDir}/dist/less-${upstreamVersion}.min.js"
+                                    tofile="${destDir}/less.min.js"/>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
