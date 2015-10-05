@@ -28,7 +28,7 @@
         <url>http://github.com/webjars/less</url>
         <connection>scm:git:https://github.com/webjars/less.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/less.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>less-parent-2.5.1</tag>
     </scm>
 
     <developers>
