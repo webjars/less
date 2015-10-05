@@ -49,7 +49,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstreamVersion>2.5.0</upstreamVersion>
+        <upstreamVersion>2.5.1</upstreamVersion>
         <sourceUrl>https://github.com/less/less.js/archive</sourceUrl>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstreamVersion}</destDir>
         <extractDir>${project.build.directory}/less.js-${upstreamVersion}</extractDir>
