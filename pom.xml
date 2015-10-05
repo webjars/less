@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>less-parent</artifactId>
-    <version>2.5.3</version>
+    <version>2.5.4-SNAPSHOT</version>
     <name>LESS Parent</name>
     <description>WebJar for LESS Parent</description>
     <url>http://webjars.org</url>
@@ -28,7 +28,7 @@
         <url>http://github.com/webjars/less</url>
         <connection>scm:git:https://github.com/webjars/less.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/less.git</developerConnection>
-        <tag>less-parent-2.5.3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
