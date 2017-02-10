@@ -49,10 +49,9 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstreamVersion>2.7.1</upstreamVersion>
         <sourceUrl>https://github.com/less/less.js/archive</sourceUrl>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstreamVersion}</destDir>
-        <extractDir>${project.build.directory}/less.js-${upstreamVersion}</extractDir>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${version.unsnapshot}</destDir>
+        <extractDir>${project.build.directory}/less.js-${version.unsnapshot}</extractDir>
     </properties>
 
     <modules>
@@ -62,6 +61,20 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.jamesward</groupId>
+                <artifactId>unsnapshot-maven-plugin</artifactId>
+                <version>0.2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unsnapshot</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
@@ -73,7 +86,7 @@
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${sourceUrl}</url>
-                            <fromFile>v${upstreamVersion}.zip</fromFile>
+                            <fromFile>v${version.unsnapshot}.zip</fromFile>
                             <toFile>${project.build.directory}/less.zip</toFile>
                         </configuration>
                     </execution>
