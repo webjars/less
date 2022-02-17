@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>less</artifactId>
-    <version>4.1.2-SNAPSHOT</version>
+    <version>4.1.2</version>
     <name>Less.js</name>
     <description>WebJar for Less.js</description>
     <url>http://webjars.org</url>
@@ -49,7 +49,7 @@
         <url>http://github.com/webjars/less</url>
         <connection>scm:git:https://github.com/webjars/less.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/less.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>less-4.1.2</tag>
     </scm>
     
     <build>
@@ -78,10 +78,10 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
                             <target>
-                                <mkdir dir="${destDir}"/>
-                                <get src="${upstream.url}/less.js" dest="${destDir}"/>
-                                <get src="${upstream.url}/less.min.js" dest="${destDir}"/>
-                                <get src="${upstream.url}/less.min.js.map" dest="${destDir}"/>
+                                <mkdir dir="${destDir}" />
+                                <get src="${upstream.url}/less.js" dest="${destDir}" />
+                                <get src="${upstream.url}/less.min.js" dest="${destDir}" />
+                                <get src="${upstream.url}/less.min.js.map" dest="${destDir}" />
                             </target>
                         </configuration>
                     </execution>
